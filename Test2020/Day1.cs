@@ -1,4 +1,6 @@
+using System;
 using Xunit;
+using Xunit.Abstractions;
 using Year2020.Day1;
 
 namespace Test2020
@@ -17,5 +19,21 @@ namespace Test2020
         {
             Assert.NotEmpty(Challenge.GetInput());
         }
+
+        [Fact]
+        public void EnsureResult()
+        {
+            var result = Challenge.GetResult();
+            Assert.NotEqual(-1, result);
+            _testOutputHelper.WriteLine(result.ToString());
+        }
+        
+        private readonly ITestOutputHelper _testOutputHelper;
+
+        public UnitTest1(ITestOutputHelper testOutputHelper)
+        {
+            _testOutputHelper = testOutputHelper;
+        }
+
     }
 }

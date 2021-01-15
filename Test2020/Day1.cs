@@ -4,7 +4,7 @@ using Year2020.Day1;
 
 namespace Test2020
 {
-    public class UnitTest1
+    public class Day1
     {
         [Fact]
         public void EnsureAddsUpTo2020()
@@ -39,7 +39,7 @@ namespace Test2020
         
         private readonly ITestOutputHelper _testOutputHelper;
 
-        public UnitTest1(ITestOutputHelper testOutputHelper)
+        public Day1(ITestOutputHelper testOutputHelper)
         {
             _testOutputHelper = testOutputHelper;
         }

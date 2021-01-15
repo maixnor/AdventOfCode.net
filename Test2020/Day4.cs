@@ -30,11 +30,11 @@ namespace Test2020
         {
             var passport = new Passport
             {
-                Byr = "gry",
+                Byr = "1937",
                 Pid = "860033327",
                 Eyr = "2020",
                 Hcl = "#fffffd",
-                Ecl = "1937",
+                Ecl = "gry",
                 Iyr = "2017",
                 Hgt = "183cm",
                 Cid = "147"
@@ -79,6 +79,8 @@ namespace Test2020
                 Hgt = "183cm"
             };
             Assert.True(passport.IsValid());
+            passport.Byr = null;
+            Assert.False(passport.IsValid());
         }
         
         private readonly ITestOutputHelper _testOutputHelper;

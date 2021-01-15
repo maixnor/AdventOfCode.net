@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Immutable;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 
 namespace Year2020.Day1
@@ -13,13 +10,18 @@ namespace Year2020.Day1
             return x + y == 2020;
         }
 
+        public static bool SumTo2020(int x, int y, int z)
+        {
+            return x + y + z== 2020;
+        }
+
         public static int[] GetInput()
         {
             var lines = File.ReadAllLines("Day1/Input.txt");
             return lines.Select(int.Parse).ToArray();
         }
 
-        public static int GetResult()
+        public static int GetResultForTwo()
         {
             var numbers = GetInput();
             for (int i = 0; i < numbers.Length; i++)
@@ -29,6 +31,24 @@ namespace Year2020.Day1
                     if (SumTo2020(numbers[i], numbers[j]))
                     {
                         return numbers[i] * numbers[j];
+                    }
+                }
+            }
+            return -1;
+        }
+        public static int GetResultForThree()
+        {
+            var numbers = GetInput();
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                for (int j = i + 1; j < numbers.Length - 1; j++)
+                {
+                    for (int k = j + 1; k < numbers.Length - 2; k++)
+                    {
+                        if (SumTo2020(numbers[i], numbers[j], numbers[k]))
+                        {
+                            return numbers[i] * numbers[j] * numbers[k];
+                        }
                     }
                 }
             }

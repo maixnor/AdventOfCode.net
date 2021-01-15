@@ -1,12 +1,24 @@
 ﻿using Xunit;
+using Xunit.Abstractions;
 using Year2020.Day2;
 
 namespace Test2020
 {
     public class Day2
     {
-
         private string TestLine = "1-3 a: abcde";
+
+        [Fact]
+        public void FindValidCountRental()
+        {
+            _testOutputHelper.WriteLine(Challenge.FindValidCountRental().ToString());
+        }
+
+        [Fact]
+        public void FindValidCountToboggan()
+        {
+            _testOutputHelper.WriteLine(Challenge.FindValidCountToboggan().ToString());
+        }
 
         [Fact]
         public void EnsureFrom()
@@ -39,17 +51,31 @@ namespace Test2020
         }
 
         [Fact]
-        public void EnsureValid()
+        public void EnsureValidRental()
         {
-            Assert.True(Challenge.IsValid("1-3 a: abcde"));
-            Assert.False(Challenge.IsValid("1-3 b: cdefg"));
-            Assert.True(Challenge.IsValid("2-9 c: ccccccccc"));
+            Assert.True(Challenge.IsValidRental("1-3 a: abcde"));
+            Assert.False(Challenge.IsValidRental("1-3 b: cdefg"));
+            Assert.True(Challenge.IsValidRental("2-9 c: ccccccccc"));
+        }
+        
+        [Fact]
+        public void EnsureValidToboggan()
+        {
+            Assert.True(Challenge.IsValidToboggan("1-3 a: abcde"));
+            Assert.False(Challenge.IsValidToboggan("1-3 b: cdefg"));
+            Assert.False(Challenge.IsValidToboggan("2-9 c: ccccccccc"));
         }
         
         [Fact]
         public void EnsureInput()
         {
             Assert.NotEmpty(Challenge.GetInput());            
+        }
+        
+        private readonly ITestOutputHelper _testOutputHelper;
+        public Day2(ITestOutputHelper testOutputHelper)
+        {
+            _testOutputHelper = testOutputHelper;
         }
     }
 }

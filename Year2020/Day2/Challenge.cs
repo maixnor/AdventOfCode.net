@@ -1,10 +1,21 @@
 ﻿using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace Year2020.Day2
 {
     public static class Challenge
     {
+
+        public static int FindValidCountRental()
+        {
+            return GetInput().Count(IsValidRental);
+        }
+
+        public static int FindValidCountToboggan()
+        {
+            return GetInput().Count(IsValidToboggan);
+        }
 
         public static string[] GetInput()
         {
@@ -38,10 +49,18 @@ namespace Year2020.Day2
             return password.Count(letter => character == letter);
         }
 
-        public static bool IsValid(string line)
+        public static bool IsValidRental(string line)
         {
             var occurrences = Occurrences(GetCharacter(line), GetPassword(line));
             return GetFrom(line) <= occurrences && occurrences <= GetTo(line);
         }
+
+        public static bool IsValidToboggan(string line)
+        {
+            var character = GetCharacter(line);
+            var password = GetPassword(line);
+            return password[GetFrom(line) - 1] == character ^ password[GetTo(line) - 1] == character;
+        }
+
     }
 }

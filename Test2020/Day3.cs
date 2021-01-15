@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Xunit;
 using Xunit.Abstractions;
 using Year2020.Day3;
@@ -25,9 +26,23 @@ namespace Test2020
         }
 
         [Fact]
-        public void FindResult()
+        public void FindResultOne()
         {
             _testOutputHelper.WriteLine(Challenge.FindResult().ToString());
+        }
+
+        [Fact]
+        public void FindAllResults()
+        {
+            var values = new List<Challenge.Way>
+            {
+                new() {Right = 1, Down = 1},
+                new() {Right = 3, Down = 1},
+                new() {Right = 5, Down = 1},
+                new() {Right = 7, Down = 1},
+                new() {Right = 1, Down = 2}
+            };
+            _testOutputHelper.WriteLine(Challenge.FindAllResults(values).ToString());
         }
         
         private readonly ITestOutputHelper _testOutputHelper;

@@ -6,7 +6,7 @@ namespace Year2020
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Advent of Code!");
         }
     }
 }

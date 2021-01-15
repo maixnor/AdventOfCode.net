@@ -9,7 +9,7 @@ namespace Year2020.Day2
         public static string[] GetInput()
         {
             var lines = File.ReadAllLines("Day2/Input.txt");
-            return lines;
+            return lines.ToArray();
         }
 
         public static int GetFrom(string line)

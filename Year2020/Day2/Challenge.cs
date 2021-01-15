@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using System.Linq;
-using System.Linq.Expressions;
 
 namespace Year2020.Day2
 {
@@ -19,8 +18,7 @@ namespace Year2020.Day2
 
         public static string[] GetInput()
         {
-            var lines = File.ReadAllLines("Day2/Input.txt");
-            return lines.ToArray();
+            return File.ReadAllLines("Day2/Input.txt");
         }
 
         public static int GetFrom(string line)

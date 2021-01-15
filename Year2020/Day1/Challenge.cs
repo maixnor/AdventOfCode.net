@@ -17,8 +17,7 @@ namespace Year2020.Day1
 
         public static int[] GetInput()
         {
-            var lines = File.ReadAllLines("Day1/Input.txt");
-            return lines.Select(int.Parse).ToArray();
+            return File.ReadAllLines("Day1/Input.txt").Select(int.Parse).ToArray();
         }
 
         public static int GetResultForTwo()

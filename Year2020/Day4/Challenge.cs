@@ -10,7 +10,7 @@ namespace Year2020.Day4
         }
     }
 
-    public struct Passwort
+    public struct Passport
     {
         public string Byr { get; set; }
         public string Iyr { get; set; }

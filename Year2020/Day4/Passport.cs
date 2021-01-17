@@ -5,25 +5,25 @@ namespace Year2020.Day4
     public struct Passport
     {
         
-        private string _byr;
+        private int _byr;
         public string Byr
         {
-            get => _byr;
-            init => _byr = value;
+            get => _byr.ToString();
+            init => _byr = int.Parse(value);
         }
 
-        private string _iyr;
+        private int _iyr;
         public string Iyr
         {
-            get => _iyr;
-            init => _iyr = value;
+            get => _iyr.ToString();
+            init => _iyr = int.Parse(value);
         }
 
-        private string _eyr;
+        private int _eyr;
         public string Eyr
         {
-            get => _eyr;
-            init => _eyr = value;
+            get => _eyr.ToString();
+            init => _eyr = int.Parse(value);
         }
 
         private string _hgt;

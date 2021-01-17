@@ -9,56 +9,56 @@ namespace Year2020.Day4
         public string Byr
         {
             get => _byr;
-            set => _byr = value;
+            init => _byr = value;
         }
 
         private string _iyr;
         public string Iyr
         {
             get => _iyr;
-            set => _iyr = value;
+            init => _iyr = value;
         }
 
         private string _eyr;
         public string Eyr
         {
             get => _eyr;
-            set => _eyr = value;
+            init => _eyr = value;
         }
 
         private string _hgt;
         public string Hgt
         {
             get => _hgt;
-            set => _hgt = value;
+            init => _hgt = value;
         }
 
         private string _hcl;
         public string Hcl
         {
             get => _hcl;
-            set => _hcl = value;
+            init => _hcl = value;
         }
 
         private string _ecl;
         public string Ecl
         {
             get => _ecl;
-            set => _ecl = value;
+            init => _ecl = value;
         }
 
         private string _pid;
         public string Pid
         {
             get => _pid;
-            set => _pid = value;
+            init => _pid = value;
         }
 
         private string _cid;
         public string Cid
         {
             get => _cid;
-            set => _cid = value;
+            init => _cid = value;
         }
 
         public static Passport ParsePassport(IEnumerable<string> data)

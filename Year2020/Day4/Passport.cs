@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace Year2020.Day4
 {
@@ -26,11 +27,11 @@ namespace Year2020.Day4
             set => _eyr = int.Parse(value);
         }
 
-        private string _hgt;
+        private Height _hgt;
         public string Hgt
         {
-            get => _hgt;
-            set => _hgt = value;
+            get => _hgt.ToString();
+            set => _hgt = Height.ParseHeight(value);
         }
 
         private string _hcl;
@@ -122,5 +123,33 @@ namespace Year2020.Day4
             return IsValid() && Cid != null;
         }
         
+    }
+
+    public struct Height
+    {
+        private int Number { get; init; }
+        private string Unit { get; init; }
+
+        public static Height ParseHeight(string height)
+        {
+            return new()
+            {
+                Number = int.Parse(height.Substring(0, height.Length - 2)),
+                Unit = height.Substring(height.Length - 2)
+            };
+        }
+
+        public bool IsValid()
+        {
+            switch (Unit)
+            {
+                case "cm":
+                    return 150 < Number && Number < 193;
+                case "in":
+                    return 59 < Number && Number < 76;
+                default:
+                    return false;
+            }
+        }
     }
 }

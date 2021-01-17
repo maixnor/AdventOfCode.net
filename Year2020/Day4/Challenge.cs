@@ -35,6 +35,7 @@ namespace Year2020.Day4
                     lines.Add(line);
                 }
             }
+            passports.Add(Passport.ParsePassport(lines.ToArray()));
             return passports.ToArray();
         }
 

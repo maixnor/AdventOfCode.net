@@ -18,7 +18,7 @@ namespace Year2020.Day4
             return ParseAllPassports(GetData());
         }
 
-        public static Passport[] ParseAllPassports(string[] data)
+        public static Passport[] ParseAllPassports(IEnumerable<string> data)
         {
             var passports = new List<Passport>();
             var lines = new List<string>();

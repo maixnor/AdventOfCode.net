@@ -1,11 +1,10 @@
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Year2020.Day4
 {
     public struct Passport
     {
-        public static Passport ParsePassport(string[] data)
+        public static Passport ParsePassport(IEnumerable<string> data)
         {
             var fields = new List<string>();
             foreach (var line in data)

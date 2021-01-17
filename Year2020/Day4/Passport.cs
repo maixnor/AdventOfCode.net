@@ -5,56 +5,56 @@ namespace Year2020.Day4
     public struct Passport
     {
         
-        private int _byr;
+        private readonly int _byr;
         public string Byr
         {
             get => _byr.ToString();
             init => _byr = int.Parse(value);
         }
 
-        private int _iyr;
+        private readonly int _iyr;
         public string Iyr
         {
             get => _iyr.ToString();
             init => _iyr = int.Parse(value);
         }
 
-        private int _eyr;
+        private readonly int _eyr;
         public string Eyr
         {
             get => _eyr.ToString();
             init => _eyr = int.Parse(value);
         }
 
-        private string _hgt;
+        private readonly string _hgt;
         public string Hgt
         {
             get => _hgt;
             init => _hgt = value;
         }
 
-        private string _hcl;
+        private readonly string _hcl;
         public string Hcl
         {
             get => _hcl;
             init => _hcl = value;
         }
 
-        private string _ecl;
+        private readonly string _ecl;
         public string Ecl
         {
             get => _ecl;
             init => _ecl = value;
         }
 
-        private string _pid;
+        private readonly string _pid;
         public string Pid
         {
             get => _pid;
             init => _pid = value;
         }
 
-        private string _cid;
+        private readonly string _cid;
         public string Cid
         {
             get => _cid;

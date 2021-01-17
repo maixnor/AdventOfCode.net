@@ -143,9 +143,9 @@ namespace Year2020.Day4
             switch (Unit)
             {
                 case "cm":
-                    return 150 < Number && Number < 193;
+                    return 150 <= Number && Number <= 193;
                 case "in":
-                    return 59 < Number && Number < 76;
+                    return 59 <= Number && Number <= 76;
                 default:
                     return false;
             }

@@ -25,6 +25,19 @@ namespace Test2020
         }
 
         [Fact]
+        public void EnsureHeightValidWithParse()
+        {
+            Assert.True(Height.ParseHeight("150cm").IsValid());
+            Assert.True(Height.ParseHeight("193cm").IsValid());
+            Assert.False(Height.ParseHeight("149cm").IsValid());
+            Assert.False(Height.ParseHeight("194cm").IsValid());
+            Assert.True(Height.ParseHeight("59in").IsValid());
+            Assert.True(Height.ParseHeight("76in").IsValid());
+            Assert.False(Height.ParseHeight("58in").IsValid());
+            Assert.False(Height.ParseHeight("77in").IsValid());
+        }
+
+        [Fact]
         public void EnsureParsePassport()
         {
             var passport = new Passport

@@ -5,60 +5,60 @@ namespace Year2020.Day4
     public struct Passport
     {
         
-        private readonly int _byr;
+        private int _byr;
         public string Byr
         {
             get => _byr.ToString();
-            init => _byr = int.Parse(value);
+            set => _byr = int.Parse(value);
         }
 
-        private readonly int _iyr;
+        private int _iyr;
         public string Iyr
         {
             get => _iyr.ToString();
-            init => _iyr = int.Parse(value);
+            set => _iyr = int.Parse(value);
         }
 
-        private readonly int _eyr;
+        private int _eyr;
         public string Eyr
         {
             get => _eyr.ToString();
-            init => _eyr = int.Parse(value);
+            set => _eyr = int.Parse(value);
         }
 
-        private readonly string _hgt;
+        private string _hgt;
         public string Hgt
         {
             get => _hgt;
-            init => _hgt = value;
+            set => _hgt = value;
         }
 
-        private readonly string _hcl;
+        private string _hcl;
         public string Hcl
         {
             get => _hcl;
-            init => _hcl = value;
+            set => _hcl = value;
         }
 
-        private readonly string _ecl;
+        private string _ecl;
         public string Ecl
         {
             get => _ecl;
-            init => _ecl = value;
+            set => _ecl = value;
         }
 
-        private readonly string _pid;
+        private string _pid;
         public string Pid
         {
             get => _pid;
-            init => _pid = value;
+            set => _pid = value;
         }
 
-        private readonly string _cid;
+        private string _cid;
         public string Cid
         {
             get => _cid;
-            init => _cid = value;
+            set => _cid = value;
         }
 
         public static Passport ParsePassport(IEnumerable<string> data)

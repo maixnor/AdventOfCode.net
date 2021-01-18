@@ -8,14 +8,12 @@ namespace Year2020.Day4
     {
         public static int FindValidCheckCount()
         {
-            var passports = ParseAllPassports();
-            return passports.Count(passport => passport.IsValidCheck());
+            return ParseAllPassports().Count(passport => passport.IsValidCheck());
         }
 
         public static int FindValidCount()
         {
-            var passports = ParseAllPassports();
-            return passports.Count(passport => passport.IsValid());
+            return ParseAllPassports().Count(passport => passport.IsValid());
         }
 
          public static Passport[] ParseAllPassports()

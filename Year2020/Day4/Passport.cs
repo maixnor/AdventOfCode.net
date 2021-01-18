@@ -40,6 +40,17 @@ namespace Year2020.Day4
             set => _hcl = value;
         }
 
+        private static List<string> colors = new()
+        {
+            "amb",
+            "blu",
+            "brn",
+            "gry",
+            "grn",
+            "hzl",
+            "oth"
+        };
+
         private string _ecl;
         public string Ecl
         {

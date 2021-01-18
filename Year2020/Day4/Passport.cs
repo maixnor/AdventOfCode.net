@@ -119,18 +119,35 @@ namespace Year2020.Day4
         public bool IsValid()
         {
             return
-                Byr != null &&
-                Iyr != null &&
-                Eyr != null &&
-                Hgt != null &&
-                Hcl != null &&
-                Ecl != null &&
+                Byr != null && 
+                Iyr != null && 
+                Eyr != null && 
+                Hgt != null && 
+                Hcl != null && 
+                Ecl != null &&  
                 Pid != null;
+        }
+
+        public bool IsValidCheck()
+        {
+            return
+                Byr != null && 1920 <= _byr && _byr <= 2002 &&
+                Iyr != null && 2010 <= _iyr && _iyr <= 2020 &&
+                Eyr != null && 2020 <= _eyr && _eyr <= 2030 &&
+                Hgt != null && _hgt.IsValid() &&
+                Hcl != null && uint.TryParse(_hcl, out var hcl) &&
+                Ecl != null && colors.Contains(_ecl) && 
+                Pid.Length == 9 && 0 > _pid && _pid >= 999999999;
         }
 
         public bool IsFullyValid()
         {
             return IsValid() && Cid != null;
+        }
+
+        public bool IsFullyValidCheck()
+        {
+            return IsValidCheck() && Cid != null;
         }
         
     }

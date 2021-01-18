@@ -6,6 +6,11 @@ namespace Year2020.Day4
 {
     public static class Challenge
     {
+        public static int FindValidCheckCount()
+        {
+            var passports = ParseAllPassports();
+            return passports.Count(passport => passport.IsValidCheck());
+        }
 
         public static int FindValidCount()
         {

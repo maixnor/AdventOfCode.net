@@ -18,16 +18,11 @@ namespace Year2020.Day4
             return passports.Count(passport => passport.IsValid());
         }
 
-        public static Passport[] ParseAllPassports()
-        {
-            return ParseAllPassports(GetData());
-        }
-
-        public static Passport[] ParseAllPassports(IEnumerable<string> data)
+         public static Passport[] ParseAllPassports()
         {
             var passports = new List<Passport>();
             var lines = new List<string>();
-            foreach (var line in data)
+            foreach (var line in GetData())
             {
                 if (line == string.Empty)
                 {

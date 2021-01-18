@@ -4,7 +4,9 @@ namespace Year2020.Day4
 {
     public struct Passport
     {
-        
+
+        #region fields
+
         private int _byr;
         public string Byr
         {
@@ -72,6 +74,8 @@ namespace Year2020.Day4
             set => _cid = value;
         }
 
+        #endregion
+        
         public static Passport ParsePassport(IEnumerable<string> data)
         {
             var fields = new List<string>();

@@ -55,7 +55,6 @@ namespace Test2020
                 Ecl = "gry",
                 Iyr = "2017",
                 Hgt = "183cm",
-                Cid = "147"
             };
             var passportFromChallenge = Passport.ParsePassport(new[]
             {

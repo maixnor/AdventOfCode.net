@@ -67,13 +67,6 @@ namespace Year2020.Day4
             set => _pid = int.Parse(value);
         }
 
-        private string _cid;
-        public string Cid
-        {
-            get => _cid;
-            set => _cid = value;
-        }
-
         #endregion
         
         public static Passport ParsePassport(IEnumerable<string> data)
@@ -108,9 +101,6 @@ namespace Year2020.Day4
                         break;
                     case "iyr":
                         passport.Iyr = value;
-                        break;
-                    case "cid":
-                        passport.Cid = value;
                         break;
                     case "hgt":
                         passport.Hgt = value;

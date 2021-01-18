@@ -58,11 +58,11 @@ namespace Year2020.Day4
             set => _ecl = value;
         }
 
-        private string _pid;
+        private int _pid;
         public string Pid
         {
-            get => _pid;
-            set => _pid = value;
+            get => _pid.ToString();
+            set => _pid = int.Parse(value);
         }
 
         private string _cid;

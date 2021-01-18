@@ -139,16 +139,5 @@ namespace Year2020.Day4
                 Ecl != null && colors.Contains(_ecl) && 
                 Pid.Length == 9 && 0 > _pid && _pid >= 999999999;
         }
-
-        public bool IsFullyValid()
-        {
-            return IsValid() && Cid != null;
-        }
-
-        public bool IsFullyValidCheck()
-        {
-            return IsValidCheck() && Cid != null;
-        }
-        
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Year2020.Day4
 {
@@ -65,9 +66,17 @@ namespace Year2020.Day4
                 Pid != null;
         }
 
+        private static readonly string[] EyeColors = {"amb", "blu", "brn", "gry", "grn", "hzl", "oth"};
         public bool IsValidCheck()
         {
-            return false;
+            return IsValid() &&
+                   int.TryParse(Byr, out var byr) && 1920 <= byr && byr <= 2002 &&
+                   int.TryParse(Iyr, out var iyr) && 2010 <= iyr && iyr <= 2030 &&
+                   int.TryParse(Eyr, out var eyr) && 2020 <= eyr && eyr <= 2030 &&
+                   Height.ParseHeight(Hgt).IsValid() &&
+                   Hcl.Length == 7 && Hcl.StartsWith('#') && //uint.TryParse(Hcl.Substring(1), out _) &&
+                   EyeColors.Contains(Ecl) &&
+                   Pid.Length == 9 && int.TryParse(Pid, out _);
         }
 
     }

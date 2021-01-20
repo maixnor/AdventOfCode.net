@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -73,9 +74,24 @@ namespace Year2020.Day4
                    int.TryParse(Iyr, out var iyr) && 2010 <= iyr && iyr <= 2030 &&
                    int.TryParse(Eyr, out var eyr) && 2020 <= eyr && eyr <= 2030 &&
                    Height.ParseHeight(Hgt).IsValid() &&
-                   Hcl.Length == 7 && Hcl.StartsWith('#') && //uint.TryParse(Hcl.Substring(1), out _) &&
+                   HairColorCheck(Hcl) &&
                    EyeColors.Contains(Ecl) &&
                    Pid.Length == 9 && int.TryParse(Pid, out _);
+        }
+
+        public static bool HairColorCheck(string hcl) // should be private, is public for xUnit test
+        {
+            try
+            {
+                return hcl.Length == 7 &&
+                       hcl.StartsWith('#') &&
+                       Convert.ToUInt32(hcl.Substring(1), 16) != null;
+            }
+            catch
+            {
+                return false;
+            }
+
         }
 
     }

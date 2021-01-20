@@ -45,6 +45,15 @@ namespace Test2020
         }
 
         [Fact]
+        public void EnsureHeightToStringWithParse()
+        {
+            Assert.Equal("150cm", Height.ParseHeight("150cm").ToString());
+            Assert.NotEqual("149cm", Height.ParseHeight("150cm").ToString());
+            Assert.Equal("64in", Height.ParseHeight("64in").ToString());
+            Assert.NotEqual("65in", Height.ParseHeight("64in").ToString());
+        }
+
+        [Fact]
         public void EnsureParsePassport()
         {
             var passport = new Passport

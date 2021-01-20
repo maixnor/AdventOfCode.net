@@ -54,6 +54,16 @@ namespace Test2020
         }
 
         [Fact]
+        public void EnsureHairColor()
+        {
+            Assert.True(Passport.HairColorCheck("#fffffd"));
+            Assert.True(Passport.HairColorCheck("#fff4fd"));
+            Assert.False(Passport.HairColorCheck("#fffff"));
+            Assert.False(Passport.HairColorCheck("fffffd"));
+            Assert.False(Passport.HairColorCheck("#fffgfd"));
+        }
+
+        [Fact]
         public void EnsureParsePassport()
         {
             var passport = new Passport

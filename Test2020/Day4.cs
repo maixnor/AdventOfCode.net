@@ -9,6 +9,11 @@ namespace Test2020
         [Fact]
         public void FindValidCheckPassports()
         {
+            // output is 161, the correct answer is 160, very weird
+            // seems like the last is a duplicate (I just checked, it is not, very weird)
+            // For part 1 I had the issue of the result being 1 too small, now this result is 1 too high
+            // For part 1 the problem was to, that the last passport (valid) was not parsed before
+            // I do not know now if the error lies in part 1 or 2
             _testOutputHelper.WriteLine(Challenge.FindValidCheckCount().ToString());
         }
         

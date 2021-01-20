@@ -9,7 +9,7 @@
         {
             return new()
             {
-                Number = int.Parse(height.Substring(0, height.Length - 2)),
+                Number = int.TryParse(height.Substring(0, height.Length - 2), out var num) ? num : -1,
                 Unit = height.Substring(height.Length - 2)
             };
         }

@@ -27,7 +27,8 @@ namespace Test2020
         [Fact]
         public void EnsureParseAllPassports()
         {
-            Assert.Equal(282, Challenge.ParseAllPassports().Length);
+            var length = Challenge.ParseAllPassports().Length;
+            Assert.Equal(282, length);
         }
 
         [Fact]

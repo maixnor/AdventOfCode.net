@@ -56,14 +56,13 @@ namespace Year2020.Day4
 
         public bool IsValid()
         {
-            return
-                Byr != null &&
-                Iyr != null &&
-                Eyr != null &&
-                Hgt != null &&
-                Hcl != null &&
-                Ecl != null &&
-                Pid != null;
+            return Byr != null &&
+                   Iyr != null &&
+                   Eyr != null &&
+                   Hgt != null &&
+                   Hcl != null &&
+                   Ecl != null &&
+                   Pid != null;
         }
 
         private static readonly string[] EyeColors = {"amb", "blu", "brn", "gry", "grn", "hzl", "oth"};

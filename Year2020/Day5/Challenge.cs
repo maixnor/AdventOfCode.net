@@ -6,8 +6,11 @@ namespace Year2020.Day5
 {
     public class Challenge
     {
-        private static readonly int PowerRows = 7; 
-        private static readonly int PowerCols = 3;
+        private const int PowerRows = 7;
+        private const int PowerCols = 3;
+
+        public static int Rows => (int) Math.Pow(2, PowerRows);
+        public static int Cols => (int) Math.Pow(2, PowerCols);
 
         public static IEnumerable<string> GetData()
         {

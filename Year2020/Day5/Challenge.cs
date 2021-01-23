@@ -15,20 +15,17 @@ namespace Year2020.Day5
         private const int PowerRows = 7;
         private const int PowerCols = 3;
         
-        public static int Rows => (int) Math.Pow(2, PowerRows);
         public static int Cols => (int) Math.Pow(2, PowerCols);
 
         public static int YourSeatId()
         {
             var seats = ParseAllSeats().OrderBy(seat => seat.SeatId).ToArray();
-            // cycle from the 2nd to the 2nd to last seat (could not be first or last)
-            // and I do not have to check for OutOfBounds each cycle
-            for (int i = 1; i < seats.Length - 1; i++)
+            for (int i = 0; i < seats.Length - 2; i++)
             {
-                if (seats[i - 1].SeatId + 1 == seats[i].SeatId && seats[i].SeatId == seats[i + 1].SeatId - 1)
-                    return seats[i].SeatId;
+                if (seats[i].SeatId + 2 == seats[i + 1].SeatId) 
+                    return seats[i].SeatId + 1; // return the next (missing) value i.e. your seat
             }
-            return -1;
+            throw new Exception("Seat not found");
         }
 
         public static IEnumerable<Seat> ParseAllSeats()
@@ -41,7 +38,7 @@ namespace Year2020.Day5
             return new()
             {
                 Row = GetRow(definition.Substring(0, PowerRows)),
-                Col = GetCol(definition.Substring(PowerRows - 1))
+                Col = GetCol(definition.Substring(PowerRows))
             };
         }
 

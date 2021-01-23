@@ -55,19 +55,19 @@ namespace Year2020.Day5
 
         private void RowUpper()
         {
-            
+            RowLowerBound += RowDiff / 2;
         }
         private void RowLower()
         {
-            
+            RowUpperBound -= RowDiff / 2;
         }
         private void ColUpper()
         {
-            
+            ColLowerBound += ColDiff / 2;
         }
         private void ColLower()
         {
-            
+            ColUpperBound -= ColDiff / 2;
         }
     }
 }

@@ -33,8 +33,13 @@ namespace Year2020.Day5
 
         public static IEnumerable<Seat> ParseAllSeats()
         {
-            return GetData().Select(line => new Seat(line));
-        } 
+            return GetData().Select(ParseSeat);
+        }
+
+        public static Seat ParseSeat(string defintion)
+        {
+            return new();
+        }
         
         public static IEnumerable<string> GetData()
         {

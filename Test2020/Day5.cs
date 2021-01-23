@@ -31,6 +31,12 @@ namespace Test2020
         {
             Assert.Equal(44, Challenge.GetRow("FBFBBFF"));
         }
+
+        [Fact]
+        public void EnsureGetCol()
+        {
+            Assert.Equal(5, Challenge.GetCol("RLR"));
+        }
         
         [Fact]
         public void EnsureParseAllSeats()

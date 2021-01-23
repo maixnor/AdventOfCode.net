@@ -60,8 +60,15 @@ namespace Year2020.Day5
             // returns -1 if any char is incorrect (which is should not be)
             return -1;
         }
-        private static int GetCol(string definition, int lower = 0, int diffPower = PowerCols)
+        public static int GetCol(string definition, int lower = 0, int diffPower = PowerCols)
         {
+            if (diffPower == 0)
+                return lower;
+            diffPower -= 1;
+            if (definition.StartsWith(ColLowerChar))
+                return GetCol(definition.Substring(1), lower, diffPower);
+            if (definition.StartsWith(ColUpperChar))
+                return GetCol(definition.Substring(1), lower + (int) Math.Pow(2, diffPower), diffPower);
             return -1;
         }
         

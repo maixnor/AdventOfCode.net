@@ -1,14 +1,10 @@
+using System;
 using System.Linq;
 
 namespace Year2020.Day5
 {
     public class Seat
     {
-        private const char RowUpperChar = 'B';
-        private const char RowLowerChar = 'F';
-        private const char ColUpperChar = 'R';
-        private const char ColLowerChar = 'L';
-
         private int RowUpperBound { get; set; }
         private int RowLowerBound { get; set; }
         private int ColUpperBound { get; set; }
@@ -38,6 +34,21 @@ namespace Year2020.Day5
 
         public int SeatId => IsLimited ? -1 : RowUpperBound * Challenge.Cols + ColUpperBound;
 
+        public bool Limit(string limiters, int col, int row, int colPower, int rowPower)
+        {
+            switch (limiters[0])
+            {
+                // limit upper bound and lower bound of rows and cols using the limiter
+                case RowUpperChar:
+                    return Limit();
+                case RowLowerChar:
+                case ColUpperChar:
+                case ColLowerChar:
+            }
+            return IsLimited;
+
+        }
+
         public bool Limit(string limiters)
         {
             return limiters.Any(Limit);
@@ -66,7 +77,8 @@ namespace Year2020.Day5
 
         private void RowUpper()
         {
-            RowLowerBound += RowDiff / 2;
+            RowLowerBound += (int)Math.Pow(2, CurrentPowerRows);
+            CurrentPowerRows--;
         }
         private void RowLower()
         {

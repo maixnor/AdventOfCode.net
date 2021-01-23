@@ -7,8 +7,13 @@ namespace Year2020.Day5
 {
     public class Challenge
     {
-        private const int PowerRows = 7;
-        private const int PowerCols = 3;
+        private const char RowUpperChar = 'B';
+        private const char RowLowerChar = 'F';
+        private const char ColUpperChar = 'R';
+        private const char ColLowerChar = 'L';
+
+        public const int PowerRows = 7;
+        public const int PowerCols = 3;
         
         public static int Rows => (int) Math.Pow(2, PowerRows);
         public static int Cols => (int) Math.Pow(2, PowerCols);

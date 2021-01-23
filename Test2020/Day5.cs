@@ -27,23 +27,6 @@ namespace Test2020
         }
         
         [Fact]
-        public void EnsureLimitChar()
-        {
-            var seat = new Seat();
-            Assert.False(seat.Limit("FBFBBFFRL"));
-            Assert.True(seat.Limit('R'));
-        }
-
-        [Fact]
-        public void EnsureLimitString()
-        {
-            Assert.True(new Seat().Limit("FBFBBFFRLR"));
-            Assert.False(new Seat().Limit("FBBBBFRL")); // one too less
-            Assert.False(new Seat().Limit("FBBBOFRLR")); // one different
-            Assert.False(new Seat().Limit("FBBBFFFRLR")); // one too much
-        }
-
-        [Fact]
         public void EnsureParseAllSeats()
         {
             Assert.NotNull(Challenge.ParseAllSeats());

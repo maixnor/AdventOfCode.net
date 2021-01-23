@@ -45,30 +45,24 @@ namespace Year2020.Day5
             };
         }
 
-        public static int GetRow(string definition, int lower = 0, int diffPower = PowerRows)
+        public static int GetRow(string definition, int lower = 0)
         {
-            // break condition
-            if (diffPower == 0)
+            if (definition == string.Empty)
                 return lower;
-            diffPower -= 1;
-            // lower half
             if (definition.StartsWith(RowLowerChar))
-                return GetRow(definition.Substring(1), lower, diffPower);
-            // upper half
+                return GetRow(definition.Substring(1), lower);
             if (definition.StartsWith(RowUpperChar))
-                return GetRow(definition.Substring(1), lower + (int) Math.Pow(2, diffPower), diffPower);
-            // returns -1 if any char is incorrect (which is should not be)
+                return GetRow(definition.Substring(1), lower + (int) Math.Pow(2, definition.Length - 1));
             return -1;
         }
-        public static int GetCol(string definition, int lower = 0, int diffPower = PowerCols)
+        public static int GetCol(string definition, int lower = 0)
         {
-            if (diffPower == 0)
+            if (definition == string.Empty)
                 return lower;
-            diffPower -= 1;
             if (definition.StartsWith(ColLowerChar))
-                return GetCol(definition.Substring(1), lower, diffPower);
+                return GetCol(definition.Substring(1), lower);
             if (definition.StartsWith(ColUpperChar))
-                return GetCol(definition.Substring(1), lower + (int) Math.Pow(2, diffPower), diffPower);
+                return GetCol(definition.Substring(1), lower + (int) Math.Pow(2, definition.Length - 1));
             return -1;
         }
         

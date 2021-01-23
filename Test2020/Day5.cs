@@ -23,7 +23,7 @@ namespace Test2020
         [Fact]
         public void FindYourSeatNumber()
         {
-            _testOutputHelper.WriteLine(Challenge.YourSeatID().ToString());
+            _testOutputHelper.WriteLine(Challenge.YourSeatId().ToString());
         }
 
         [Fact]

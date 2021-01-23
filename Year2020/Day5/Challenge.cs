@@ -18,7 +18,7 @@ namespace Year2020.Day5
         public static int Rows => (int) Math.Pow(2, PowerRows);
         public static int Cols => (int) Math.Pow(2, PowerCols);
 
-        public static int YourSeatID()
+        public static int YourSeatId()
         {
             var seats = ParseAllSeats().OrderBy(seat => seat.SeatId).ToArray();
             // cycle from the 2nd to the 2nd to last seat (could not be first or last)

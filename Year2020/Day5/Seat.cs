@@ -19,13 +19,24 @@ namespace Year2020.Day5
         
         public bool IsLimited => RowLowerBound == RowUpperBound && ColLowerBound == ColUpperBound;
 
-        public Seat(int rows, int cols)
+        public Seat(string limiter)
         {
-            RowUpperBound = rows;
-            ColUpperBound = cols;
+            RowUpperBound = Challenge.Rows;
+            ColUpperBound = Challenge.Cols;
+            RowLowerBound = 0;
+            ColLowerBound = 0;
+            Limit(limiter);
+        }
+
+        public Seat()
+        {
+            RowUpperBound = Challenge.Rows;
+            ColUpperBound = Challenge.Cols;
             RowLowerBound = 0;
             ColLowerBound = 0;
         }
+
+        public int SeatScore => IsLimited ? -1 : RowUpperBound * Challenge.Rows + ColUpperBound;
 
         public bool Limit(string limiters)
         {

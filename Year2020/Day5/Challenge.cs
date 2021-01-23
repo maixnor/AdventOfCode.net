@@ -38,7 +38,20 @@ namespace Year2020.Day5
 
         public static Seat ParseSeat(string defintion)
         {
-            return new();
+            return new()
+            {
+                Row = GetRow(defintion.Substring(0, PowerRows)),
+                Col = GetCol(defintion.Substring(PowerCols - 1))
+            };
+        }
+
+        private static int GetRow(string definition, int lower = 0, int diffPower = PowerRows)
+        {
+            return -1;
+        }
+        private static int GetCol(string definition, int lower = 0, int diffPower = PowerCols)
+        {
+            return -1;
         }
         
         public static IEnumerable<string> GetData()

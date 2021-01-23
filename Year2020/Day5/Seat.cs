@@ -36,7 +36,7 @@ namespace Year2020.Day5
             ColLowerBound = 0;
         }
 
-        public int SeatScore => IsLimited ? -1 : RowUpperBound * Challenge.Rows + ColUpperBound;
+        public int SeatId => IsLimited ? -1 : RowUpperBound * Challenge.Rows + ColUpperBound;
 
         public bool Limit(string limiters)
         {

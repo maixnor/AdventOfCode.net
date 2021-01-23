@@ -17,7 +17,7 @@ namespace Test2020
         [Fact]
         public void FindHighestSeatNumber()
         {
-            _testOutputHelper.WriteLine(Challenge.ParseAllSeats().Max(seat => seat.SeatScore).ToString());
+            _testOutputHelper.WriteLine(Challenge.ParseAllSeats().Max(seat => seat.SeatId).ToString());
         }
         
         [Fact]
@@ -35,6 +35,18 @@ namespace Test2020
             Assert.False(new Seat().Limit("FBBBBFRL")); // one too less
             Assert.False(new Seat().Limit("FBBBOFRLR")); // one different
             Assert.False(new Seat().Limit("FBBBFFFRLR")); // one too much
+        }
+
+        [Fact]
+        public void EnsureParseAllSeats()
+        {
+            Assert.NotNull(Challenge.ParseAllSeats());
+        }
+
+        [Fact]
+        public void EnsureGetData()
+        {
+            Assert.NotNull(Challenge.GetData());
         }
     }
 }

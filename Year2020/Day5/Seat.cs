@@ -1,3 +1,5 @@
+using System.Linq;
+
 namespace Year2020.Day5
 {
     public class Seat
@@ -24,15 +26,7 @@ namespace Year2020.Day5
 
         public bool Limit(string limiters)
         {
-            foreach (var limiter in limiters)
-            {
-                if (Limit(limiter))
-                    return true;
-            }
-            // could be replaced with false I think as the last limit call returns IsLimited,
-            // after the last limitation has taken place.
-            // would be beneficial to performance.
-            return IsLimited; 
+            return limiters.Any(Limit);
         }
 
         public bool Limit(char limiter)

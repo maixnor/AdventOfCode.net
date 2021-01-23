@@ -36,12 +36,12 @@ namespace Year2020.Day5
             return GetData().Select(ParseSeat);
         }
 
-        public static Seat ParseSeat(string defintion)
+        public static Seat ParseSeat(string definition)
         {
             return new()
             {
-                Row = GetRow(defintion.Substring(0, PowerRows)),
-                Col = GetCol(defintion.Substring(PowerCols - 1))
+                Row = GetRow(definition.Substring(0, PowerRows)),
+                Col = GetCol(definition.Substring(PowerRows - 1))
             };
         }
 

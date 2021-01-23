@@ -25,6 +25,12 @@ namespace Test2020
         {
             _testOutputHelper.WriteLine(Challenge.YourSeatID().ToString());
         }
+
+        [Fact]
+        public void EnsureGetRow()
+        {
+            Assert.Equal(44, Challenge.GetRow("FBFBBFF"));
+        }
         
         [Fact]
         public void EnsureParseAllSeats()

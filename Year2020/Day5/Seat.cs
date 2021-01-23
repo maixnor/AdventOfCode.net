@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Year2020.Day5
 {
-    public class Seat
+    public struct Seat
     {
         private int RowUpperBound { get; set; }
         private int RowLowerBound { get; set; }

@@ -62,8 +62,7 @@ namespace Year2020.Day5
 
         private void RowUpper()
         {
-            RowLowerBound += (int)Math.Pow(2, CurrentPowerRows);
-            CurrentPowerRows--;
+            RowLowerBound += RowDiff / 2;
         }
         private void RowLower()
         {

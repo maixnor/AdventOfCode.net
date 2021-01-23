@@ -6,6 +6,11 @@ namespace Year2020.Day5
         private int RowLowerBound { get; set; }
         private int ColUpperBound { get; set; }
         private int ColLowerBound { get; set; }
+        
+        private const char RowUpperChar = 'B';
+        private const char RowLowerChar = 'F';
+        private const char ColUpperChar = 'R';
+        private const char ColLowerChar = 'L';
 
         public bool IsLimited => RowLowerBound == RowUpperBound && ColLowerBound == ColUpperBound;
 

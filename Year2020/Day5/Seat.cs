@@ -8,7 +8,9 @@ namespace Year2020.Day5
         public int Row { get; init; }
         public int Col { get; init; }
 
-        public int SeatId => Row * Challenge.Cols + Col;
+        public bool IsValid => Row >= 0 && Col >= 0;
+
+        public int SeatId => IsValid ? Row * Challenge.Cols + Col : -1;
         
     }
 }

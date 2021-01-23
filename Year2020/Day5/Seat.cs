@@ -21,8 +21,8 @@ namespace Year2020.Day5
 
         public Seat(string limiter)
         {
-            RowUpperBound = Challenge.Rows;
-            ColUpperBound = Challenge.Cols;
+            RowUpperBound = Challenge.Rows - 1;
+            ColUpperBound = Challenge.Cols - 1;
             RowLowerBound = 0;
             ColLowerBound = 0;
             Limit(limiter);
@@ -30,8 +30,8 @@ namespace Year2020.Day5
 
         public Seat()
         {
-            RowUpperBound = Challenge.Rows;
-            ColUpperBound = Challenge.Cols;
+            RowUpperBound = Challenge.Rows - 1;
+            ColUpperBound = Challenge.Cols - 1;
             RowLowerBound = 0;
             ColLowerBound = 0;
         }

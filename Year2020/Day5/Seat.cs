@@ -31,7 +31,22 @@ namespace Year2020.Day5
 
         public bool Limit(char limiter)
         {
-            // limit upper bound and lower bound of rows and cols using the limiter
+            switch (limiter)
+            {
+                // limit upper bound and lower bound of rows and cols using the limiter
+                case RowUpperChar:
+                    RowUpper();
+                    break;
+                case RowLowerChar:
+                    RowLower();
+                    break;
+                case ColUpperChar:
+                    ColUpper();
+                    break;
+                case ColLowerChar:
+                    ColLower();
+                    break;
+            }
             return IsLimited;
         }
 

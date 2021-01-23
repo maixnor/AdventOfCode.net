@@ -5,10 +5,10 @@ namespace Year2020.Day5
 {
     public struct Seat
     {
-        public static int Row { get; set; }
-        public static int Col { get; set; }
+        public int Row { get; init; }
+        public int Col { get; init; }
 
-        public static int SeatId => Row * Challenge.Cols + Col;
+        public int SeatId => Row * Challenge.Cols + Col;
         
     }
 }

@@ -21,6 +21,12 @@ namespace Test2020
         }
         
         [Fact]
+        public void FindYourSeatNumber()
+        {
+            _testOutputHelper.WriteLine(Challenge.YourSeatID().ToString());
+        }
+        
+        [Fact]
         public void EnsureLimitChar()
         {
             var seat = new Seat();

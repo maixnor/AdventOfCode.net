@@ -34,21 +34,6 @@ namespace Year2020.Day5
 
         public int SeatId => IsLimited ? -1 : RowUpperBound * Challenge.Cols + ColUpperBound;
 
-        public bool Limit(string limiters, int col, int row, int colPower, int rowPower)
-        {
-            switch (limiters[0])
-            {
-                // limit upper bound and lower bound of rows and cols using the limiter
-                case RowUpperChar:
-                    return Limit();
-                case RowLowerChar:
-                case ColUpperChar:
-                case ColLowerChar:
-            }
-            return IsLimited;
-
-        }
-
         public bool Limit(string limiters)
         {
             return limiters.Any(Limit);

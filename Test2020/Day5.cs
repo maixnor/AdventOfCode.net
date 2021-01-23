@@ -27,6 +27,12 @@ namespace Test2020
         }
 
         [Fact]
+        public void EnsureParseSeat()
+        {
+            Assert.Equal(357, Challenge.ParseSeat("FBFBBFFRLR").SeatId);
+        }
+
+        [Fact]
         public void EnsureGetRow()
         {
             Assert.Equal(44, Challenge.GetRow("FBFBBFF"));

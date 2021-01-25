@@ -11,5 +11,23 @@ namespace Test2020
         {
             Assert.NotEmpty(Challenge.GetData());
         }
+
+        [Fact]
+        public void EnsureForm()
+        {
+            // adgvrhblps
+            // pghsdrbmalv
+            // hrlbpdasgv
+            // bgvsdplahr
+
+            var form = new Form();
+            Assert.Equal(0, form.CheckCount);
+            form.Check("abcx");
+            Assert.Equal(4, form.CheckCount);
+            form.Check("abcy");
+            Assert.Equal(5, form.CheckCount);
+            form.Check("abcz");
+            Assert.Equal(6, form.CheckCount);
+        }
     }
 }

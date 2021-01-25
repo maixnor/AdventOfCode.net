@@ -2,8 +2,12 @@ using System.Collections.Generic;
 
 namespace Year2020.Day6
 {
-    public struct Form
+    public class Form
     {
+        public Form()
+        {
+            Checks = new HashSet<char>();
+        }
         private HashSet<char> Checks { get; }
 
         public int CheckCount => Checks.Count;

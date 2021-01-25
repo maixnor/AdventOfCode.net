@@ -13,7 +13,7 @@ namespace Year2020.Day6
 
         public void AllCheck(string checks)
         {
-            AllChecks ??= new HashSet<char>(checks);
+            AllChecks ??= new HashSet<char>(checks.Where(check => 97 <= check && check <= 122));
             
             var checksArr = checks.Where(check => 97 <= check && check <= 122).ToHashSet();
             foreach (var check in AllChecks)

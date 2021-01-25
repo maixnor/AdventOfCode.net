@@ -15,11 +15,6 @@ namespace Test2020
         [Fact]
         public void EnsureForm()
         {
-            // adgvrhblps
-            // pghsdrbmalv
-            // hrlbpdasgv
-            // bgvsdplahr
-
             var form = new Form();
             Assert.Equal(0, form.CheckCount);
             form.Check("abcx");

@@ -18,5 +18,11 @@ namespace Test2020
             Assert.True(new Bag {Color = "dark orange"}.IsOfColor("dark orange"));
             Assert.True(new Bag {Color = "bright white"}.IsOfColor("bright white"));
         }
+
+        [Fact]
+        public void EnsureGetBags()
+        {
+            // TODO for tomorrow
+        }
     }
 }

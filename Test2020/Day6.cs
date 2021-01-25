@@ -28,6 +28,8 @@ namespace Test2020
             Assert.Equal(5, form.CheckCount);
             form.Check("abcz");
             Assert.Equal(6, form.CheckCount);
+            form.Check("1ASH");
+            Assert.Equal(6, form.CheckCount);
         }
     }
 }

@@ -16,7 +16,8 @@ namespace Year2020.Day6
         {
             foreach (var check in checks)
             {
-                Checks.Add(check);
+                if (97 <= check && check <= 122) // check if char is a lowercase character
+                    Checks.Add(check);
             }
         }
     }

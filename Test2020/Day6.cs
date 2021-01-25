@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Xunit;
 using Year2020.Day6;
 

@@ -22,7 +22,7 @@ namespace Year2020.Day6
                     forms.Add(currentForm);
                     currentForm = new Form();
                 }
-                currentForm.Check(line);
+                currentForm.AnyCheck(line);
             }
             forms.Add(currentForm);
             return forms;

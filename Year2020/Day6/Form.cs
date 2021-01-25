@@ -6,18 +6,19 @@ namespace Year2020.Day6
     {
         public Form()
         {
-            Checks = new HashSet<char>();
+            AnyChecks = new HashSet<char>();
         }
-        private HashSet<char> Checks { get; }
+        
+        private HashSet<char> AnyChecks { get; }
 
-        public int CheckCount => Checks.Count;
+        public int CheckCount => AnyChecks.Count;
 
-        public void Check(string checks)
+        public void AnyCheck(string checks)
         {
             foreach (var check in checks)
             {
                 if (97 <= check && check <= 122) // check if char is a lowercase character
-                    Checks.Add(check);
+                    AnyChecks.Add(check);
             }
         }
     }

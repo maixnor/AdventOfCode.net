@@ -28,13 +28,13 @@ namespace Test2020
         {
             var form = new Form();
             Assert.Equal(0, form.CheckCount);
-            form.Check("abcx");
+            form.AnyCheck("abcx");
             Assert.Equal(4, form.CheckCount);
-            form.Check("abcy");
+            form.AnyCheck("abcy");
             Assert.Equal(5, form.CheckCount);
-            form.Check("abcz");
+            form.AnyCheck("abcz");
             Assert.Equal(6, form.CheckCount);
-            form.Check("1ASH");
+            form.AnyCheck("1ASH");
             Assert.Equal(6, form.CheckCount);
         }
         

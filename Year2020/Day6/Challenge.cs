@@ -15,18 +15,21 @@ namespace Year2020.Day6
             return GetFormsAny().Sum(form => form.AnyCheckCount);
         }
 
-        public static IEnumerable<Form> GetFormsAll()
+        public static IEnumerable<Form> GetFormsAll(string[] data = null)
         {
             var forms = new List<Form>();
             var currentForm = new Form();
-            foreach (var line in GetData())
+            foreach (var line in data ?? GetData())
             {
                 if (line == string.Empty)
                 {
                     forms.Add(currentForm);
                     currentForm = new Form();
                 }
-                currentForm.AllCheck(line);
+                else
+                {
+                    currentForm.AllCheck(line);
+                }
             }
             forms.Add(currentForm);
             return forms;
@@ -42,7 +45,10 @@ namespace Year2020.Day6
                     forms.Add(currentForm);
                     currentForm = new Form();
                 }
-                currentForm.AnyCheck(line);
+                else
+                {
+                    currentForm.AnyCheck(line);
+                }
             }
             forms.Add(currentForm);
             return forms;

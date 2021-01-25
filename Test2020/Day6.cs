@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using Xunit;
 using Xunit.Abstractions;
 using Year2020.Day6;
@@ -24,6 +26,24 @@ namespace Test2020
         }
 
         [Fact]
+        public void EnsureGetFormsAll()
+        {
+            var data = new string[]
+            {
+                "adgvrhblps",
+                "pghsdrbmalv",
+                "hrlbpdasgv",
+                "bgvsdplahr",
+                string.Empty,
+                "lgnpfhrm",
+                "hwmng",
+                "gunhmo"
+            };
+            var result = Challenge.GetFormsAll(data);
+            _testOutputHelper.WriteLine(result.Sum(form => form.AllCheckCount).ToString());
+        }
+
+        [Fact]
         public void EnsureFormAll()
         {
             var form = new Form();
@@ -36,6 +56,22 @@ namespace Test2020
             Assert.Equal(3, form.AllCheckCount);
             form.AllCheck("1ASH");
             Assert.Equal(0, form.AllCheckCount);
+            form = new Form();
+            form.AllCheck("adgvrhblps");
+            Assert.Equal(10, form.AllCheckCount);
+            form.AllCheck("pghsdrbmalv");
+            Assert.Equal(10, form.AllCheckCount);
+            form.AllCheck("hrlbpdasgv");
+            Assert.Equal(10, form.AllCheckCount);
+            form.AllCheck("bgvsdplahr");
+            Assert.Equal(10, form.AllCheckCount);
+            form = new Form();
+            form.AllCheck("lgnpfhrm");
+            Assert.Equal(8, form.AllCheckCount);
+            form.AllCheck("hwmng");
+            Assert.Equal(4, form.AllCheckCount);
+            form.AllCheck("gunhmo");
+            Assert.Equal(4, form.AllCheckCount);
         }
 
         [Fact]

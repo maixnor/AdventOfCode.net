@@ -4,7 +4,7 @@ namespace Year2020.Day6
 {
     public struct Form
     {
-        private SortedSet<char> Checks { get; }
+        private HashSet<char> Checks { get; }
 
         public int CheckCount => Checks.Count;
 

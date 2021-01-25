@@ -1,4 +1,6 @@
+using System;
 using Xunit;
+using Xunit.Abstractions;
 using Year2020.Day6;
 
 namespace Test2020
@@ -6,9 +8,20 @@ namespace Test2020
     public class Day6
     {
         [Fact]
+        public void FindCombinedCheckCount()
+        {
+            _testOutputHelper.WriteLine(Challenge.GetCombinedCount().ToString());
+        }
+        [Fact]
         public void EnsureInput()
         {
             Assert.NotEmpty(Challenge.GetData());
+        }
+
+        [Fact]
+        public void EnsureForms()
+        {
+            Assert.NotEmpty(Challenge.GetForms());
         }
 
         [Fact]
@@ -24,6 +37,13 @@ namespace Test2020
             Assert.Equal(6, form.CheckCount);
             form.Check("1ASH");
             Assert.Equal(6, form.CheckCount);
+        }
+        
+        private readonly ITestOutputHelper _testOutputHelper;
+
+        public Day6(ITestOutputHelper testOutputHelper)
+        {
+            _testOutputHelper = testOutputHelper;
         }
     }
 }

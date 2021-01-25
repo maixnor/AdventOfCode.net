@@ -3,34 +3,30 @@ using System.Linq;
 
 namespace Year2020.Day6
 {
-    public class Form
+    public struct Form
     {
-        public Form()
-        {
-            AnyChecks = new HashSet<char>();
-        }
-        
-        private List<char> AllChecks { get; set; }
-        private HashSet<char> AnyChecks { get; }
+        private HashSet<char> AllChecks { get; set; }
+        private HashSet<char> AnyChecks { get; set; }
 
-        public int CheckCount => AnyChecks.Count;
+        public int AllCheckCount => AllChecks?.Count ?? 0;
+        public int AnyCheckCount => AnyChecks?.Count ?? 0;
 
         public void AllCheck(string checks)
         {
-            if (AllChecks == null)
-                AllChecks = new List<char>(checks);
-            else
+            AllChecks ??= new HashSet<char>(checks);
+            
+            var checksArr = checks.Where(check => 97 <= check && check <= 122).ToHashSet();
+            foreach (var check in AllChecks)
             {
-                foreach (var check in checks.Where(check => 97 <= check && check <= 122))
-                {
-                    if (!AllChecks.Contains(check))
-                        AllChecks.Remove(check);
-                }
+                if (!checksArr.Contains(check))
+                    AllChecks.Remove(check);
             }
         }
 
         public void AnyCheck(string checks)
         {
+            AnyChecks ??= new HashSet<char>(checks);
+            
             foreach (var check in checks.Where(check => 97 <= check && check <= 122))
             {
                 AnyChecks.Add(check);

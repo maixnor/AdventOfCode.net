@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Year2020.Day7
 {
@@ -10,25 +11,35 @@ namespace Year2020.Day7
             var bags = new List<Bag>();
             foreach (var line in data ?? GetData())
             {
-                var parts = line.Split("bags contain"); // splits into bag and relations
-                var containStrings = parts[1].Split(',');
-                var contains = new Dictionary<Bag, int>();
-                // get contain relations mapped
-                foreach (var containing in containStrings)
-                {
-                    var relations = containing.Trim().Split(' ');
-                    contains.Add(
-                        new Bag { Color = $"{relations[1]} {relations[2]}" }, 
-                        int.Parse(relations[0])
-                    );
-                }
-                bags.Add(new Bag
-                {
-                    Color = parts[0].Trim(),
-                    Contains = contains
-                });
+                // pale cyan bags contain 2 posh black bags, 4 wavy gold bags, 2 vibrant brown bags.
+                // split by "contain" => [pale cyan bags], [2 posh black bags, 4 wavy gold bags, 2 vibrant brown bags]
+                var parts = line.Split("contain");
+                // parse bag with bag part
+                var bag = ParseBag(parts[0]);
+                // split relation part by ',' => [2 posh black bags], [4 wavy gold bags], [2 vibrant brown bags]
+                // and parse to relations
+                var relations = parts[1].Split(',').Select(ParseRelation);
             }
             return bags;
+        }
+
+        public static Bag ParseBag(string str)
+        {
+            // [pale cyan bags]
+            // split by ' ' => [pale], [cyan], ([bags])
+            var split = str.Split(' ');
+            return new Bag {Color = $"{split[0]} {split[1]}"};
+        }
+
+        public static KeyValuePair<Bag, int> ParseRelation(string str)
+        {
+            // [2 posh black bags]
+            // split by ' ' once => [2], [posh black bags]
+            var split = str.Split(' ', 1);
+            return new KeyValuePair<Bag, int>(
+                ParseBag(split[1]),
+                int.Parse(split[0])
+            );
         }
         
         public static IEnumerable<string> GetData()

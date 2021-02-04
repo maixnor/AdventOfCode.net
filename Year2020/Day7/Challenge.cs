@@ -35,7 +35,7 @@ namespace Year2020.Day7
         {
             // [2 posh black bags]
             // split by ' ' once => [2], [posh black bags]
-            var split = str.Split(' ', 1);
+            var split = str.Split(' ', 2);
             return new KeyValuePair<Bag, int>(
                 ParseBag(split[1]),
                 int.Parse(split[0])

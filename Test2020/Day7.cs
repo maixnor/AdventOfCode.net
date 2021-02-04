@@ -1,10 +1,32 @@
-﻿using Xunit;
+﻿using System.Collections.Generic;
+using Xunit;
 using Year2020.Day7;
 
 namespace Test2020
 {
     public class Day7
     {
+
+        [Fact]
+        public void EnsureParseBag()
+        {
+            var expected = new Bag {Color = "pale gray"};
+            var actual = Challenge.ParseBag("pale gray bag");
+            Assert.Equal(expected, actual);
+            var actualPlural = Challenge.ParseBag("pale gray bags");
+            Assert.Equal(expected, actualPlural);
+        }
+
+        [Fact]
+        public void EnsureParseRelation()
+        {
+            var expected = new KeyValuePair<Bag, int>(
+                new Bag {Color = "pale gray"},
+                2);
+            var actual = Challenge.ParseRelation("2 pale gray bags");
+            Assert.Equal(expected, actual);
+        }
+        
         [Fact]
         public void EnsureData()
         {
@@ -19,10 +41,5 @@ namespace Test2020
             Assert.True(new Bag {Color = "bright white"}.IsOfColor("bright white"));
         }
 
-        [Fact]
-        public void EnsureGetBags()
-        {
-            // TODO for tomorrow
-        }
     }
 }

@@ -30,3 +30,8 @@ plus whatever year it is referencing to.
 
 # Prerequisites 
 * .net 5 SDK 
+
+# Lessons learned
+* Linq simplifies everything and makes the code much more readable
+* Unit testing is a must to see ones mistakes and fix it quickly
+* Taking a 10 minute thinking break makes solving problem far easier

@@ -28,7 +28,7 @@ namespace Year2020.Day7
             foreach (var part in parts[1].Split(','))
             {
                 var relation = ParseRelation(part);
-                if (relation.HasValue)
+                if (relation is not null)
                     bag.Contains.Add(relation.Value.Key, relation.Value.Value);
             }
             return bag;

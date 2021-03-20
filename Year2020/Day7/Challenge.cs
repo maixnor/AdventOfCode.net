@@ -18,12 +18,12 @@ namespace Year2020.Day7
 
         public static Bag GetBag(string line)
         {
-            // pale cyan bags contain 2 posh black bags, 4 wavy gold bags, 2 vibrant brown bags.
-            // split by "contain" => [pale cyan bags], [2 posh black bags, 4 wavy gold bags, 2 vibrant brown bags]
+            // [pale cyan bags contain 2 posh black bags, 4 wavy gold bags, 2 vibrant brown bags.]
+            // split by "contain" => [pale cyan bags], [2 posh black bags, 4 wavy gold bags, 2 vibrant brown bags.]
             var parts = line.Split("contain");
             // parse bag with bag part
             var bag = ParseBag(parts[0]);
-            // split relation part by ',' => [2 posh black bags], [4 wavy gold bags], [2 vibrant brown bags]
+            // split relation part by ',' => [2 posh black bags], [4 wavy gold bags], [2 vibrant brown bags.]
             // and parse to relations
             foreach (var part in parts[1].Split(','))
             {

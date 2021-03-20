@@ -45,9 +45,10 @@ namespace Year2020.Day7
         public static KeyValuePair<Bag, int>? ParseRelation(string str)
         {
             // [2 posh black bags]
-            // split by ' ' once => [2], [posh black bags]
+            // if str contains "no other bags return null
             if (str.Contains("no other bags"))
                 return null;
+            // split by ' ' once => [2], [posh black bags]
             var split = str.Trim().Split(' ', 2);
             return new KeyValuePair<Bag, int>(
                 ParseBag(split[1]),

@@ -46,6 +46,16 @@ namespace Test2020
         }
         
         [Fact]
+        public void EnsureParseRelationHandlesSpaceAsFirstCharacter()
+        {
+            var expected = new KeyValuePair<Bag, int>(
+                new Bag {Color = "pale gray"},
+                2);
+            var actual = Challenge.ParseRelation(" 2 pale gray bags");
+            Assert.Equal(expected, actual);
+        }
+        
+        [Fact]
         public void EnsureData()
         {
             Assert.NotNull(Challenge.GetData());

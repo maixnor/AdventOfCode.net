@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using FluentAssertions;
+using Xunit;
 using Xunit.Abstractions;
 using Year2020.Day2;
 
@@ -6,16 +7,21 @@ namespace Test2020
 {
     public class Day2
     {
-        private string TestLine = "1-3 a: abcde";
+        private string _testLine = "1-3 a: abcde";
+        private readonly ITestOutputHelper _testOutputHelper;
+        public Day2(ITestOutputHelper testOutputHelper)
+        {
+            _testOutputHelper = testOutputHelper;
+        }
 
         [Fact]
-        public void FindValidCountRental()
+        public void GetSolutionForValidCountRental()
         {
             _testOutputHelper.WriteLine(Challenge.FindValidCountRental().ToString());
         }
 
         [Fact]
-        public void FindValidCountToboggan()
+        public void GetSolutionForValidCountToboggan()
         {
             _testOutputHelper.WriteLine(Challenge.FindValidCountToboggan().ToString());
         }
@@ -23,59 +29,53 @@ namespace Test2020
         [Fact]
         public void From()
         {
-            Assert.Equal(1, Challenge.GetFrom(TestLine));
+            Challenge.GetFrom(_testLine).Should().Be(1);
         }
         
         [Fact]
         public void To()
         {
-            Assert.Equal(3, Challenge.GetTo(TestLine));
+            Challenge.GetTo(_testLine).Should().Be(3);
         }
 
         [Fact]
         public void Character()
         {
-            Assert.Equal('a', Challenge.GetCharacter(TestLine));
+            Challenge.GetCharacter(_testLine).Should().Be('a');
         }
 
         [Fact]
         public void Password()
         {
-            Assert.Equal("abcde", Challenge.GetPassword(TestLine));
+            Challenge.GetPassword(_testLine).Should().Be("abcde");
         }
 
         [Fact]
         public void Occurrences()
         {
-            Assert.Equal(1,Challenge.Occurrences('a', Challenge.GetPassword(TestLine)));
+            Challenge.Occurrences('a', Challenge.GetPassword(_testLine)).Should().Be(1);
         }
 
         [Fact]
         public void ValidRental()
         {
-            Assert.True(Challenge.IsValidRental("1-3 a: abcde"));
-            Assert.False(Challenge.IsValidRental("1-3 b: cdefg"));
-            Assert.True(Challenge.IsValidRental("2-9 c: ccccccccc"));
+            Challenge.IsValidRental("1-3 a: abcde").Should().BeTrue();
+            Challenge.IsValidRental("1-3 b: cdefg").Should().BeFalse();
+            Challenge.IsValidRental("2-9 c: ccccccccc").Should().BeTrue();
         }
         
         [Fact]
         public void ValidToboggan()
         {
-            Assert.True(Challenge.IsValidToboggan("1-3 a: abcde"));
-            Assert.False(Challenge.IsValidToboggan("1-3 b: cdefg"));
-            Assert.False(Challenge.IsValidToboggan("2-9 c: ccccccccc"));
+            Challenge.IsValidToboggan("1-3 a: abcde").Should().BeTrue();
+            Challenge.IsValidToboggan("1-3 b: cdefg").Should().BeFalse();
+            Challenge.IsValidToboggan("2-9 c: ccccccccc").Should().BeFalse();
         }
         
         [Fact]
         public void Input()
         {
-            Assert.NotEmpty(Challenge.GetInput());            
-        }
-        
-        private readonly ITestOutputHelper _testOutputHelper;
-        public Day2(ITestOutputHelper testOutputHelper)
-        {
-            _testOutputHelper = testOutputHelper;
+            Challenge.GetInput().Should().NotBeEmpty().And.Should().NotBeNull();
         }
     }
 }

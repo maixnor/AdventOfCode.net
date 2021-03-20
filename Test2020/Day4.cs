@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using FluentAssertions;
+using Xunit;
 using Xunit.Abstractions;
 using Year2020.Day4;
 
@@ -6,13 +7,20 @@ namespace Test2020
 {
     public class Day4
     {
+        private readonly ITestOutputHelper _testOutputHelper;
+
+        public Day4(ITestOutputHelper testOutputHelper)
+        {
+            _testOutputHelper = testOutputHelper;
+        }
+
         [Fact]
         public void FindValidCheckPassports()
         {
             // output is 161, the correct answer is 160, very weird
             // seems like the last is a duplicate (I just checked, it is not, very weird)
             // For part 1 I had the issue of the result being 1 too small, now this result is 1 too high
-            // For part 1 the problem was to, that the last passport (valid) was not parsed before
+            // For part 1 the problem was that the last passport (valid) was not added in the en
             // I do not know now if the error lies in part 1 or 2
             _testOutputHelper.WriteLine(Challenge.FindValidCheckCount().ToString());
         }
@@ -26,52 +34,51 @@ namespace Test2020
         [Fact]
         public void Input()
         {
-            Assert.NotNull(Challenge.GetData());
+            Challenge.GetData().Should().NotBeEmpty().And.Should().NotBeNull();
         }
 
         [Fact]
         public void ParseAllPassports()
         {
-            var length = Challenge.ParseAllPassports().Length;
-            Assert.Equal(282, length);
+            Challenge.ParseAllPassports().Length.Should().Be(282);
         }
 
         [Fact]
-        public void HeightValidWithParse()
+        public void Height_ParseHeightAndIsValid()
         {
-            Assert.True(Height.ParseHeight("150cm").IsValid());
-            Assert.True(Height.ParseHeight("193cm").IsValid());
-            Assert.False(Height.ParseHeight("149cm").IsValid());
-            Assert.False(Height.ParseHeight("194cm").IsValid());
-            Assert.True(Height.ParseHeight("59in").IsValid());
-            Assert.True(Height.ParseHeight("76in").IsValid());
-            Assert.False(Height.ParseHeight("58in").IsValid());
-            Assert.False(Height.ParseHeight("77in").IsValid());
+            Height.ParseHeight("150cm").IsValid().Should().BeTrue();
+            Height.ParseHeight("193cm").IsValid().Should().BeTrue();
+            Height.ParseHeight("149cm").IsValid().Should().BeFalse();
+            Height.ParseHeight("194cm").IsValid().Should().BeFalse();
+            Height.ParseHeight("59in").IsValid().Should().BeTrue();
+            Height.ParseHeight("76in").IsValid().Should().BeTrue();
+            Height.ParseHeight("58in").IsValid().Should().BeFalse();
+            Height.ParseHeight("77in").IsValid().Should().BeFalse();
         }
 
         [Fact]
-        public void HeightToStringWithParse()
+        public void ParsedHeightToStringShouldBeHeight()
         {
-            Assert.Equal("150cm", Height.ParseHeight("150cm").ToString());
-            Assert.NotEqual("149cm", Height.ParseHeight("150cm").ToString());
-            Assert.Equal("64in", Height.ParseHeight("64in").ToString());
-            Assert.NotEqual("65in", Height.ParseHeight("64in").ToString());
+            Height.ParseHeight("150cm").ToString().Should().Be("150cm");
+            Height.ParseHeight("159cm").ToString().Should().NotBe("150cm");
+            Height.ParseHeight("64in").ToString().Should().Be("64in");
+            Height.ParseHeight("74in").ToString().Should().NotBe("64in");
         }
 
         [Fact]
-        public void HairColor()
+        public void HairColorCheck()
         {
-            Assert.True(Passport.HairColorCheck("#fffffd"));
-            Assert.True(Passport.HairColorCheck("#fff4fd"));
-            Assert.False(Passport.HairColorCheck("#fffff"));
-            Assert.False(Passport.HairColorCheck("fffffd"));
-            Assert.False(Passport.HairColorCheck("#fffgfd"));
+            Passport.HairColorCheck("#fffffd").Should().BeTrue();
+            Passport.HairColorCheck("#fff4fd").Should().BeTrue();
+            Passport.HairColorCheck("#fffff").Should().BeFalse();
+            Passport.HairColorCheck("fffffd").Should().BeFalse();
+            Passport.HairColorCheck("#fffgfd").Should().BeFalse();
         }
 
         [Fact]
         public void ParsePassport()
         {
-            var passport = new Passport
+            var expectedPassport = new Passport
             {
                 Byr = "1937",
                 Pid = "860033327",
@@ -81,31 +88,30 @@ namespace Test2020
                 Iyr = "2017",
                 Hgt = "183cm",
             };
-            var passportFromChallenge = Passport.ParsePassport(new[]
+            var actualPassport = Passport.ParsePassport(new[]
             {
                 "ecl:gry pid:860033327 eyr:2020 hcl:#fffffd",
                 "byr:1937 iyr:2017 cid:147 hgt:183cm"
             });
-            Assert.Equal(passport, passportFromChallenge);
+            expectedPassport.Should().BeEquivalentTo(actualPassport);
         }
         
         [Fact]
-        public void PassportValidCheck()
+        public void Passport_ValidCheck()
         {
             // let's check the valid first
-            
             var passport = Passport.ParsePassport(new []
             {
                 "pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980",
                 "hcl:#623a2f"
             });
-            Assert.True(passport.IsValidCheck());
+            passport.IsValidCheck().Should().BeTrue();
             passport = Passport.ParsePassport(new []
             {
                 "eyr:2029 ecl:blu cid:129 byr:1989",
                 "iyr:2014 pid:896056539 hcl:#a97842 hgt:165cm"
             });
-            Assert.True(passport.IsValidCheck());
+            passport.IsValidCheck().Should().BeTrue();
             passport = Passport.ParsePassport(new []
             {
                 "hcl:#888785",
@@ -113,58 +119,57 @@ namespace Test2020
                 "pid:545766238 ecl:hzl",
                 "eyr:2022"
             });
-            Assert.True(passport.IsValidCheck());
+            passport.IsValidCheck().Should().BeTrue();
             passport = Passport.ParsePassport(new []
             {
                 "iyr:2010 hgt:158cm hcl:#b6652a ecl:blu byr:1944 eyr:2021 pid:093154719"
             });
-            Assert.True(passport.IsValidCheck());
+            passport.IsValidCheck().Should().BeTrue();
 
             // now some invalid
-            
             passport = Passport.ParsePassport(new []
             {
                 "eyr:1972 cid:100",
                 "hcl:#18171d ecl:amb hgt:170 pid:186cm iyr:2018 byr:1926"
             });
-            Assert.False(passport.IsValidCheck());
+            passport.IsValidCheck().Should().BeFalse();
             passport = Passport.ParsePassport(new []
             {
                 "iyr:2019",
                 "hcl:#602927 eyr:1967 hgt:170cm",
                 "ecl:grn pid:012533040 byr:1946"
             });
-            Assert.False(passport.IsValidCheck());
+            passport.IsValidCheck().Should().BeFalse();
             passport = Passport.ParsePassport(new []
             {
                 "hcl:dab227 iyr:2012",
                 "ecl:brn hgt:182cm pid:021572410 eyr:2020 byr:1992 cid:277"
             });
-            Assert.False(passport.IsValidCheck());
+            passport.IsValidCheck().Should().BeFalse();
             passport = Passport.ParsePassport(new []
             {
                 "hgt:59cm ecl:zzz",
                 "eyr:2038 hcl:74454a iyr:2023",
                 "pid:3556412378 byr:2007"
             });
-            Assert.False(passport.IsValidCheck());
+            passport.IsValidCheck().Should().BeFalse();
         }
 
         [Fact]
-        public void PassportValid()
+        public void Passport_IsValid()
         {
             var passport = Passport.ParsePassport(new []
             {
                 "ecl:gry pid:860033327 eyr:2020 hcl:#fffffd",
                 "byr:1937 iyr:2017 cid:147 hgt:183cm"
             });
-            Assert.True(passport.IsValid());
+            passport.IsValid().Should().BeTrue();
             passport = Passport.ParsePassport(new []
             {
                 "iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884",
                 "hcl:#cfa07d byr:1929"
             });
-            Assert.False(passport.IsValid());
+            passport.IsValid().Should().BeTrue();
             passport = Passport.ParsePassport(new []
             {
                 "hcl:#ae17e1 iyr:2013",
@@ -172,20 +177,13 @@ namespace Test2020
                 "ecl:brn pid:760753108 byr:1931",
                 "hgt:179cm"
             });
-            Assert.True(passport.IsValid());
+            passport.IsValid().Should().BeTrue();
             passport = Passport.ParsePassport(new []
             {
                 "hcl:#cfa07d eyr:2025 pid:166559648",
                 "iyr:2011 ecl:brn hgt:59in"
             });
-            Assert.False(passport.IsValid());
-        }
-        
-        private readonly ITestOutputHelper _testOutputHelper;
-
-        public Day4(ITestOutputHelper testOutputHelper)
-        {
-            _testOutputHelper = testOutputHelper;
+            passport.IsValid().Should().BeTrue();
         }
     }
 }

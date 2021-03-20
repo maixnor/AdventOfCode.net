@@ -18,7 +18,7 @@ namespace Test2020
                     { new Bag { Color = "muted yellow" }, 2 }
                 }
             };
-            var actual = Challenge.GetBag("light red bags contain 1 bright white bag, 2 muted yellow bags");
+            var actual = Challenge.GetBag("light red bags contain 1 bright white bag, 2 muted yellow bags.");
             Assert.Equal(expected.Color, actual.Color);
             Assert.Equal(expected.Contains, actual.Contains);
             Assert.Equal(expected.Contains.Count, actual.Contains.Count);

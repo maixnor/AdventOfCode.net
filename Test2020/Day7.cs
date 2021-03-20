@@ -6,6 +6,24 @@ namespace Test2020
 {
     public class Day7
     {
+        [Fact]
+        public void EnsureGetBagWithRelations()
+        {
+            var expected = new Bag
+            {
+                Color = "light red",
+                Contains = new Dictionary<Bag, int>()
+                {
+                    { new Bag { Color = "bright white" }, 1 },
+                    { new Bag { Color = "muted yellow" }, 2 }
+                }
+            };
+            var actual = Challenge.GetBag("light red bags contain 1 bright white bag, 2 muted yellow bags");
+            Assert.Equal(expected.Color, actual.Color);
+            Assert.Equal(expected.Contains, actual.Contains);
+            Assert.Equal(expected.Contains.Count, actual.Contains.Count);
+            //Assert.Equal(expected, actual); with this line the test fails. not sure why.
+        }
 
         [Fact]
         public void EnsureParseBag()

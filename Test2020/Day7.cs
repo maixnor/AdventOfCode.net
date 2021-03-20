@@ -54,6 +54,14 @@ namespace Test2020
             var actual = Challenge.ParseRelation(" 2 pale gray bags");
             Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void EnsureParseRelationHandlesNoOtherBags()
+        {
+            KeyValuePair<Bag, int>? expected = null;
+            var actual = Challenge.ParseRelation("no other bags.");
+            Assert.Equal(expected, actual);
+        }
         
         [Fact]
         public void EnsureData()

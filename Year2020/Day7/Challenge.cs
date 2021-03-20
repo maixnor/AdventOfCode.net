@@ -25,8 +25,12 @@ namespace Year2020.Day7
             var bag = ParseBag(parts[0]);
             // split relation part by ',' => [2 posh black bags], [4 wavy gold bags], [2 vibrant brown bags]
             // and parse to relations
-            var relations = parts[1].Split(',').Select(ParseRelation);
-            bag.Contains = new Dictionary<Bag, int>(relations);
+            foreach (var part in parts[1].Split(','))
+            {
+                var relation = ParseRelation(part);
+                if (relation.HasValue)
+                    bag.Contains.Add(relation.Value.Key, relation.Value.Value);
+            }
             return bag;
         }
 
@@ -38,10 +42,12 @@ namespace Year2020.Day7
             return new Bag {Color = $"{split[0]} {split[1]}"};
         }
 
-        public static KeyValuePair<Bag, int> ParseRelation(string str)
+        public static KeyValuePair<Bag, int>? ParseRelation(string str)
         {
             // [2 posh black bags]
             // split by ' ' once => [2], [posh black bags]
+            if (str.Contains("no other bags"))
+                return null;
             var split = str.Trim().Split(' ', 2);
             return new KeyValuePair<Bag, int>(
                 ParseBag(split[1]),

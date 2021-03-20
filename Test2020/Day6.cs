@@ -20,13 +20,13 @@ namespace Test2020
         }
 
         [Fact]
-        public void EnsureInput()
+        public void Input()
         {
             Assert.NotEmpty(Challenge.GetData());
         }
 
         [Fact]
-        public void EnsureGetFormsAll()
+        public void GetFormsAll()
         {
             var data = new string[]
             {
@@ -44,7 +44,7 @@ namespace Test2020
         }
 
         [Fact]
-        public void EnsureFormAll()
+        public void FormAll()
         {
             var form = new Form();
             Assert.Equal(0, form.AllCheckCount);
@@ -75,7 +75,7 @@ namespace Test2020
         }
 
         [Fact]
-        public void EnsureFormAny()
+        public void FormAny()
         {
             var form = new Form();
             Assert.Equal(0, form.AnyCheckCount);

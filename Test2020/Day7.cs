@@ -8,7 +8,7 @@ namespace Test2020
     public class Day7
     {
         [Fact]
-        public void EnsureGetBagsWithTestData()
+        public void GetBagsWithTestData()
         {
             var data = new string[]
             {
@@ -28,7 +28,7 @@ namespace Test2020
         }
         
         [Fact]
-        public void EnsureGetBagWithRelations()
+        public void GetBagWithRelations()
         {
             var expected = new Bag
             {
@@ -47,7 +47,7 @@ namespace Test2020
         }
 
         [Fact]
-        public void EnsureParseBag()
+        public void ParseBag()
         {
             var expected = new Bag {Color = "pale gray"};
             var actual = Challenge.ParseBag("pale gray bag");
@@ -57,7 +57,7 @@ namespace Test2020
         }
 
         [Fact]
-        public void EnsureParseRelation()
+        public void ParseRelation()
         {
             var expected = new KeyValuePair<Bag, int>(
                 new Bag {Color = "pale gray"},
@@ -67,7 +67,7 @@ namespace Test2020
         }
         
         [Fact]
-        public void EnsureParseRelationHandlesSpaceAsFirstCharacter()
+        public void ParseRelationHandlesSpaceAsFirstCharacter()
         {
             var expected = new KeyValuePair<Bag, int>(
                 new Bag {Color = "pale gray"},
@@ -77,7 +77,7 @@ namespace Test2020
         }
 
         [Fact]
-        public void EnsureParseRelationHandlesNoOtherBags()
+        public void ParseRelationHandlesNoOtherBags()
         {
             KeyValuePair<Bag, int>? expected = null;
             var actual = Challenge.ParseRelation("no other bags.");
@@ -85,17 +85,16 @@ namespace Test2020
         }
         
         [Fact]
-        public void EnsureData()
+        public void Data()
         {
             Assert.NotNull(Challenge.GetData());
         }
 
         [Fact]
-        public void EnsureBagIsOfColor()
+        public void BagIsOfColor()
         {
             Assert.True(new Bag {Color = "light red"}.IsOfColor("light red"));
-            Assert.True(new Bag {Color = "dark orange"}.IsOfColor("dark orange"));
-            Assert.True(new Bag {Color = "bright white"}.IsOfColor("bright white"));
+            Assert.False(new Bag {Color = "dark orange"}.IsOfColor("mute blue"));
         }
 
     }

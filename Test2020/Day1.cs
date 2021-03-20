@@ -7,7 +7,7 @@ namespace Test2020
     public class Day1
     {
         [Fact]
-        public void EnsureAddsUpTo2020()
+        public void AddsUpTo2020()
         {
             Assert.True(Challenge.SumTo2020(1721, 299));
             Assert.False(Challenge.SumTo2020(1720, 299));
@@ -16,13 +16,13 @@ namespace Test2020
         }
 
         [Fact]
-        public void EnsureInput()
+        public void Input()
         {
             Assert.NotEmpty(Challenge.GetInput());
         }
 
         [Fact]
-        public void EnsureResultForTwo()
+        public void ResultForTwo()
         {
             var result = Challenge.GetResultForTwo();
             Assert.NotEqual(-1, result);
@@ -30,7 +30,7 @@ namespace Test2020
         }
         
         [Fact]
-        public void EnsureResultForThree()
+        public void ResultForThree()
         {
             var result = Challenge.GetResultForThree();
             Assert.NotEqual(-1, result);

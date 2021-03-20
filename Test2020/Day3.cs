@@ -11,13 +11,13 @@ namespace Test2020
         private string TestLine = "..##.......";
 
         [Fact]
-        public void EnsureInput()
+        public void Input()
         {
             Assert.NotEmpty(Challenge.GetInput());
         }
 
         [Fact]
-        public void EnsureIsHit()
+        public void IsHit()
         {
             Assert.False(Challenge.IsTree(0, TestLine));
             Assert.True(Challenge.IsTree(2, TestLine));

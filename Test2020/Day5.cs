@@ -27,13 +27,13 @@ namespace Test2020
         }
 
         [Fact]
-        public void EnsureParseSeat()
+        public void ParseSeat()
         {
             Assert.Equal(357, Challenge.ParseSeat("FBFBBFFRLR").SeatId);
         }
 
         [Fact]
-        public void EnsureGetRow()
+        public void GetRow()
         {
             Assert.Equal(44, Challenge.GetRow("FBFBBFF"));
             Assert.Equal(22, Challenge.GetRow("FBFBBF")); // one too less
@@ -42,7 +42,7 @@ namespace Test2020
         }
 
         [Fact]
-        public void EnsureGetCol()
+        public void GetCol()
         {
             Assert.Equal(5, Challenge.GetCol("RLR"));
             Assert.Equal(2, Challenge.GetCol("RL"));
@@ -51,13 +51,13 @@ namespace Test2020
         }
         
         [Fact]
-        public void EnsureParseAllSeats()
+        public void ParseAllSeats()
         {
             Assert.NotNull(Challenge.ParseAllSeats());
         }
 
         [Fact]
-        public void EnsureGetData()
+        public void GetData()
         {
             Assert.NotNull(Challenge.GetData());
         }

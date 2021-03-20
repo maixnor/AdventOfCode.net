@@ -24,20 +24,20 @@ namespace Test2020
         }
         
         [Fact]
-        public void EnsureInput()
+        public void Input()
         {
             Assert.NotNull(Challenge.GetData());
         }
 
         [Fact]
-        public void EnsureParseAllPassports()
+        public void ParseAllPassports()
         {
             var length = Challenge.ParseAllPassports().Length;
             Assert.Equal(282, length);
         }
 
         [Fact]
-        public void EnsureHeightValidWithParse()
+        public void HeightValidWithParse()
         {
             Assert.True(Height.ParseHeight("150cm").IsValid());
             Assert.True(Height.ParseHeight("193cm").IsValid());
@@ -50,7 +50,7 @@ namespace Test2020
         }
 
         [Fact]
-        public void EnsureHeightToStringWithParse()
+        public void HeightToStringWithParse()
         {
             Assert.Equal("150cm", Height.ParseHeight("150cm").ToString());
             Assert.NotEqual("149cm", Height.ParseHeight("150cm").ToString());
@@ -59,7 +59,7 @@ namespace Test2020
         }
 
         [Fact]
-        public void EnsureHairColor()
+        public void HairColor()
         {
             Assert.True(Passport.HairColorCheck("#fffffd"));
             Assert.True(Passport.HairColorCheck("#fff4fd"));
@@ -69,7 +69,7 @@ namespace Test2020
         }
 
         [Fact]
-        public void EnsureParsePassport()
+        public void ParsePassport()
         {
             var passport = new Passport
             {
@@ -90,7 +90,7 @@ namespace Test2020
         }
         
         [Fact]
-        public void EnsurePassportValidCheck()
+        public void PassportValidCheck()
         {
             // let's check the valid first
             
@@ -151,7 +151,7 @@ namespace Test2020
         }
 
         [Fact]
-        public void EnsurePassportValid()
+        public void PassportValid()
         {
             var passport = Passport.ParsePassport(new []
             {

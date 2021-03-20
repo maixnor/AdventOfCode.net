@@ -21,37 +21,37 @@ namespace Test2020
         }
 
         [Fact]
-        public void EnsureFrom()
+        public void From()
         {
             Assert.Equal(1, Challenge.GetFrom(TestLine));
         }
         
         [Fact]
-        public void EnsureTo()
+        public void To()
         {
             Assert.Equal(3, Challenge.GetTo(TestLine));
         }
 
         [Fact]
-        public void EnsureCharacter()
+        public void Character()
         {
             Assert.Equal('a', Challenge.GetCharacter(TestLine));
         }
 
         [Fact]
-        public void EnsurePassword()
+        public void Password()
         {
             Assert.Equal("abcde", Challenge.GetPassword(TestLine));
         }
 
         [Fact]
-        public void EnsureOccurrences()
+        public void Occurrences()
         {
             Assert.Equal(1,Challenge.Occurrences('a', Challenge.GetPassword(TestLine)));
         }
 
         [Fact]
-        public void EnsureValidRental()
+        public void ValidRental()
         {
             Assert.True(Challenge.IsValidRental("1-3 a: abcde"));
             Assert.False(Challenge.IsValidRental("1-3 b: cdefg"));
@@ -59,7 +59,7 @@ namespace Test2020
         }
         
         [Fact]
-        public void EnsureValidToboggan()
+        public void ValidToboggan()
         {
             Assert.True(Challenge.IsValidToboggan("1-3 a: abcde"));
             Assert.False(Challenge.IsValidToboggan("1-3 b: cdefg"));
@@ -67,7 +67,7 @@ namespace Test2020
         }
         
         [Fact]
-        public void EnsureInput()
+        public void Input()
         {
             Assert.NotEmpty(Challenge.GetInput());            
         }

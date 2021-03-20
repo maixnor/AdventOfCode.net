@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using FluentAssertions;
 using Xunit;
 using Xunit.Abstractions;
 using Year2020.Day3;
@@ -8,33 +9,41 @@ namespace Test2020
 {
     public class Day3
     {
-        private string TestLine = "..##.......";
+        private string _testLine = "..##.......";
+        private readonly ITestOutputHelper _testOutputHelper;
+
+        public Day3(ITestOutputHelper testOutputHelper)
+        {
+            _testOutputHelper = testOutputHelper;
+        }
 
         [Fact]
         public void Input()
         {
-            Assert.NotEmpty(Challenge.GetInput());
+            Challenge.GetInput().Should().NotBeEmpty().And.Should().NotBeNull();
         }
 
         [Fact]
-        public void IsHit()
+        public void IsTree()
         {
-            Assert.False(Challenge.IsTree(0, TestLine));
-            Assert.True(Challenge.IsTree(2, TestLine));
-            Assert.False(Challenge.IsTree(11, TestLine)); // + 11
-            Assert.True(Challenge.IsTree(13, TestLine));  // + 11
+            Challenge.IsTree(0, _testLine).Should().BeTrue();
+            Challenge.IsTree(2, _testLine).Should().BeFalse();
+            // one "column" later (length of _testLine is 11)
+            Challenge.IsTree(11, _testLine).Should().BeTrue();
+            Challenge.IsTree(13, _testLine).Should().BeFalse();
         }
 
         [Fact]
-        public void FindResultOne()
+        public void GetSolutionForResultOne()
         {
             _testOutputHelper.WriteLine(Challenge.FindResult().ToString());
         }
 
         [Fact]
-        public void FindAllResults()
+        public void GetSolutionForResultTwo()
         {
-            var values = new List<Challenge.Way>
+            // go each way one and sum all the different ways
+            var ways = new List<Challenge.Way>
             {
                 new() {Right = 1, Down = 1},
                 new() {Right = 3, Down = 1},
@@ -42,14 +51,7 @@ namespace Test2020
                 new() {Right = 7, Down = 1},
                 new() {Right = 1, Down = 2}
             };
-            _testOutputHelper.WriteLine(Challenge.FindAllResults(values).ToString());
-        }
-        
-        private readonly ITestOutputHelper _testOutputHelper;
-
-        public Day3(ITestOutputHelper testOutputHelper)
-        {
-            _testOutputHelper = testOutputHelper;
+            _testOutputHelper.WriteLine(Challenge.FindAllResults(ways).ToString());
         }
     }
 }

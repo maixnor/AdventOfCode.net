@@ -1,4 +1,5 @@
 using System.Linq;
+using FluentAssertions;
 using Xunit;
 using Xunit.Abstractions;
 using Year2020.Day5;
@@ -29,37 +30,37 @@ namespace Test2020
         [Fact]
         public void ParseSeat()
         {
-            Assert.Equal(357, Challenge.ParseSeat("FBFBBFFRLR").SeatId);
+            Challenge.ParseSeat("FBFBBFFRLR").SeatId.Should().Be(357);
         }
 
         [Fact]
         public void GetRow()
         {
-            Assert.Equal(44, Challenge.GetRow("FBFBBFF"));
-            Assert.Equal(22, Challenge.GetRow("FBFBBF")); // one too less
-            Assert.Equal(88, Challenge.GetRow("FBFBBFFF")); // one too much
-            Assert.Equal(-1, Challenge.GetRow("FBFOBFF")); // one char off
+            Challenge.GetRow("FBFBBFF").Should().Be(44);
+            Challenge.GetRow("FBFBBF").Should().Be(22); // one too less
+            Challenge.GetRow("FBFBBFFF").Should().Be(88); // one too much
+            Challenge.GetRow("FBFOBFF").Should().Be(-1); // one char off
         }
 
         [Fact]
         public void GetCol()
         {
-            Assert.Equal(5, Challenge.GetCol("RLR"));
-            Assert.Equal(2, Challenge.GetCol("RL"));
-            Assert.Equal(11, Challenge.GetCol("RLRR"));
-            Assert.Equal(-1, Challenge.GetCol("ROR"));
+            Challenge.GetCol("RLR").Should().Be(5);
+            Challenge.GetCol("RL").Should().Be(2); // one too less
+            Challenge.GetCol("RLRR").Should().Be(11); // one too much
+            Challenge.GetCol("ROR").Should().Be(-1); // one char off
         }
         
         [Fact]
         public void ParseAllSeats()
         {
-            Assert.NotNull(Challenge.ParseAllSeats());
+            Challenge.ParseAllSeats().Should().NotBeNullOrEmpty();
         }
 
         [Fact]
         public void GetData()
         {
-            Assert.NotNull(Challenge.GetData());
+            Challenge.GetData().Should().NotBeNullOrEmpty();
         }
     }
 }

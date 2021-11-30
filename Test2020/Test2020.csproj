@@ -4,6 +4,8 @@
         <TargetFramework>net5.0</TargetFramework>
 
         <IsPackable>false</IsPackable>
+
+        <RootNamespace>Test2020</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -20,7 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Year2020\Year2020.csproj" />
+      <ProjectReference Include="..\Solution2020\Solution2020.csproj" />
     </ItemGroup>
 
 </Project>

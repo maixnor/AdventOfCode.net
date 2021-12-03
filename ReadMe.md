@@ -1,15 +1,18 @@
 ﻿
 # Welcome
-This is my project for the AdventOfCode event.
+This is my project for the AdventOfCode event of 2020 and 2021 (more are following).
 
-AdventOfCode is an annual event started in 2015 to challenge programmers. 
+AdventOfCode is an annual event which started in 2015 to challenge programmers. 
 2 tasks are given each day to solve where the second task is related to the first.
+For each task you get 1 star, at the end you should have 50 stars.
 
-## Disclaimer
+## Disclaimers
 AdventOfCode is supposed to be done in the advent time 1st to 25th of December, 
-I am late more than a month for 2020 as you may have been able to guess by the dates.
 
-# What to do
+* 2020: I am late more than a month for this years event.
+* 2021: So far I am keeping up, just 2 days behind. 
+
+# What to do here?
 Have a look around for many reasons:
 * You are stuck and want to know how to solve a problem
 * You are interested in my coding skills 
@@ -17,7 +20,7 @@ Have a look around for many reasons:
 * Whatever other reasons you can think of (let me know so I can put it here)
 
 You can just review all my code and git handling right here on Github or clone the repository 
-using your favourite IDE (I prefer JetBrains' Rider).
+using your favourite IDE (I prefer JetBrains' Rider) or the ominous *shell*.
 
 I am open to recommendations on how I could have done better.
 
@@ -29,7 +32,7 @@ For every event there is a xUnit test project with the naming convention "Test"
 plus whatever year it is referencing to.
 
 # Prerequisites 
-* .net 5 SDK 
+* .net 6 SDK 
 
 # Lessons learned
 * Linq simplifies everything and makes the code much more readable

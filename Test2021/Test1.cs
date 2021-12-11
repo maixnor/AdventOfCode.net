@@ -4,7 +4,7 @@ using Solution2021.Day1;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Test2021.Day1
+namespace Test2021
 {
     public class Tests
     {
